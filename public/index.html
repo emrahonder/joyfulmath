@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Joyful Math – Reach the Target</title>
+  <meta name="description" content="A fun math game for kids: combine the numbers with + − × ÷ to reach the target.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    (function () {
+      var t = localStorage.getItem('jm-theme') ||
+        (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.dataset.theme = t;
+    })();
+  </script>
+</head>
+<body>
+  <header class="top">
+    <h1 class="logo"><span>Joyful</span> Math</h1>
+    <button id="themeToggle" class="icon-btn" aria-label="Switch between light and dark theme" title="Switch theme">🌙</button>
+  </header>
+
+  <main>
+    <section class="card intro">
+      <h2>🎯 Reach the Target</h2>
+      <p>Use <strong>every number once</strong> and <strong>all four operations</strong> (+ − × ÷) at least once to make the target number.</p>
+    </section>
+
+    <section class="card settings" aria-label="Settings">
+      <label>Numbers from 1 to
+        <select id="range">
+          <option value="10">10</option>
+          <option value="100">100</option>
+        </select>
+      </label>
+      <label>How many numbers
+        <select id="count">
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+      </label>
+      <button id="newPuzzle" class="btn primary">✨ New puzzle</button>
+    </section>
+
+    <section class="card game">
+      <div class="target" id="targetBox">
+        <span class="label">Target</span>
+        <span class="value" id="target">?</span>
+      </div>
+
+      <div class="tiles" id="tiles" aria-label="Numbers"></div>
+
+      <div class="ops" id="ops" aria-label="Operations">
+        <button class="op" data-op="+" aria-label="plus">+</button>
+        <button class="op" data-op="-" aria-label="minus">−</button>
+        <button class="op" data-op="×" aria-label="times">×</button>
+        <button class="op" data-op="÷" aria-label="divided by">÷</button>
+      </div>
+      <div class="used" id="used" aria-label="Operations used so far"></div>
+
+      <p class="message" id="message" role="status" aria-live="polite">Pick a number, an operation, then another number.</p>
+
+      <ol class="steps" id="steps"></ol>
+
+      <div class="actions">
+        <button id="undo" class="btn">↩ Undo</button>
+        <button id="reset" class="btn">🔄 Start over</button>
+        <button id="showSolutions" class="btn accent">💡 Show solutions</button>
+      </div>
+    </section>
+
+    <section class="card solutions" id="solutions" hidden>
+      <h2>💡 Possible solutions</h2>
+      <div id="solutionList"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year">2026</span> <a href="https://solutiny.com" target="_blank" rel="noopener">Solutiny</a>. All rights reserved.</p>
+    <div class="share" aria-label="Share Joyful Math">
+      <a id="shareFb" class="share-btn" target="_blank" rel="noopener" aria-label="Share on Facebook" title="Share on Facebook">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8h2.7l.5-3.2h-3.2V8.7c0-.9.4-1.7 1.8-1.7h1.5V4.2S15.5 4 14.3 4C11.8 4 10.2 5.5 10.2 8.1v2.7H7.5V14h2.7v8h3.3z"/></svg>
+      </a>
+      <a id="shareX" class="share-btn" target="_blank" rel="noopener" aria-label="Share on X (Twitter)" title="Share on X (Twitter)">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.8 3h3L14.3 10.4 22 21h-6l-4.7-6.2L5.9 21h-3l7-7.9L2.5 3h6.2l4.2 5.7L17.8 3zm-1 16.2h1.7L7.8 4.7H6z"/></svg>
+      </a>
+    </div>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>
