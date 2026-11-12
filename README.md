@@ -8,7 +8,7 @@ Use every number once and all four operations (+ − × ÷) at least once to rea
 
 - Numbers range: 1–10 or 1–100
 - 5 to 10 numbers per puzzle
-- Every puzzle is guaranteed solvable
+- Every puzzle is guaranteed solvable, and the given numbers are always unique
 - Click-to-play: pick a number, an operation, then another number. Undo and start over included
 - "Show solutions" lists up to 5 step-by-step solutions
 - Light and dark theme (follows the system, remembered per browser)

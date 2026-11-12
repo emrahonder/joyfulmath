@@ -19,6 +19,7 @@
 
   // ---------- Puzzle generation (always solvable) ----------
   // Build backwards from the target: split a number into two that combine to it.
+  // All starting numbers must be unique.
   function splits(v, op, max) {
     const out = [];
     if (op === '+') for (let x = 1; x < v; x++) { if (x <= max && v - x <= max) out.push([x, v - x]); }
@@ -40,7 +41,8 @@
         for (const op of ops) {
           const idxs = shuffle(pool.map((_, k) => k));
           for (const i of idxs) {
-            const opts = splits(pool[i], op, max);
+            const others = pool.filter((_, k) => k !== i);
+            const opts = splits(pool[i], op, max).filter(([x, y]) => x !== y && !others.includes(x) && !others.includes(y));
             if (!opts.length) continue;
             const [x, y] = opts[rnd(0, opts.length - 1)];
             steps.push(stepText(x, y, op, pool[i])); used.add(op);
